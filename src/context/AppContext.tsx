@@ -36,18 +36,18 @@ const initialState: AppState = {
   voiceMessages: [
       { 
           id: 'vm1', 
-          // Public domain bird sound from Webalketa on Pixabay
-          audioUrl: 'https://cdn.pixabay.com/audio/2022/03/24/audio_32c25b7b9c.mp3',
-          duration: 4,
+          // Public domain sound from Freesound
+          audioUrl: 'https://cdn.freesound.org/previews/156/156031_2396985-lq.mp3',
+          duration: 1,
           senderRole: SenderRole.FAMILY, 
           senderName: 'Your Grandson, Leo',
           timestamp: '10:30 AM'
       },
        { 
           id: 'vm2', 
-          // Public domain water stream sound from AlesiaDavina on Pixabay
-          audioUrl: 'https://cdn.pixabay.com/audio/2024/05/27/audio_2911a86657.mp3',
-          duration: 9,
+          // Public domain sound from Freesound
+          audioUrl: 'https://cdn.freesound.org/previews/270/270319_5123851-lq.mp3',
+          duration: 2,
           senderRole: SenderRole.CAREGIVER, 
           senderName: 'Your Caregiver, Sam',
           timestamp: '11:15 AM'
