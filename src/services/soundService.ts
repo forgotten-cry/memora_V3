@@ -1,9 +1,9 @@
 // A simple service to manage audio playback for alerts.
 
-// Public domain alarm sound from Freesound (OGG format for compatibility)
-const SOS_ALERT_URL = 'https://cdn.freesound.org/previews/341/341985_5734891-lq.ogg';
-// Public domain notification sound from Freesound (OGG format for compatibility)
-const REMINDER_ALERT_URL = 'https://cdn.freesound.org/previews/320/320654_5260872-lq.ogg';
+// Public domain alarm sound from Freesound (MP3 format for max compatibility)
+const SOS_ALERT_URL = 'https://cdn.freesound.org/previews/198/198841_379769-lq.mp3';
+// Public domain notification sound from Freesound (MP3 format for max compatibility)
+const REMINDER_ALERT_URL = 'https://cdn.freesound.org/previews/587/587251_6279347-lq.mp3';
 
 let sosAudio: HTMLAudioElement | null = null;
 let reminderAudio: HTMLAudioElement | null = null;
