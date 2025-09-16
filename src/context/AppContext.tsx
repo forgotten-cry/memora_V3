@@ -36,18 +36,17 @@ const initialState: AppState = {
   voiceMessages: [
       { 
           id: 'vm1', 
-          // Public domain sound from Freesound (MP3 format)
-          audioUrl: 'https://cdn.freesound.org/previews/253/253173_4184620-lq.mp3',
-          duration: 1,
+          // Sounds from Google's Assistant Sound Library
+          audioUrl: 'https://actions.google.com/sounds/v1/human_voices/human_speech.mp3',
+          duration: 2,
           senderRole: SenderRole.FAMILY, 
           senderName: 'Your Grandson, Leo',
           timestamp: '10:30 AM'
       },
        { 
           id: 'vm2', 
-          // Public domain sound from Freesound (MP3 format)
-          audioUrl: 'https://cdn.freesound.org/previews/391/391539_5121236-lq.mp3',
-          duration: 1,
+          audioUrl: 'https://actions.google.com/sounds/v1/human_voices/voice_with_scratchy_reception.mp3',
+          duration: 3,
           senderRole: SenderRole.CAREGIVER, 
           senderName: 'Your Caregiver, Sam',
           timestamp: '11:15 AM'
