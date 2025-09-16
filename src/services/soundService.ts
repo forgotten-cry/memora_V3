@@ -1,8 +1,5 @@
 // A simple service to manage audio playback for alerts.
-
-// Sounds from Google's Assistant Sound Library (MP3 format for max compatibility)
-const SOS_ALERT_URL = 'https://actions.google.com/sounds/v1/alarms/alarm_clock.mp3';
-const REMINDER_ALERT_URL = 'https://actions.google.com/sounds/v1/notifications/harp_notification.mp3';
+import { SOS_ALERT_URL, REMINDER_ALERT_URL } from '../assets/audioData';
 
 let sosAudio: HTMLAudioElement | null = null;
 let reminderAudio: HTMLAudioElement | null = null;

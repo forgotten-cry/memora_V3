@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Reminder, Alert, AppAction, Memory, EventLogItem, SharedQuote, VoiceMessage, SenderRole } from '../types';
+import { VOICE_MESSAGE_LEO_URL, VOICE_MESSAGE_SAM_URL } from '../assets/audioData';
 
 interface AppState {
   reminders: Reminder[];
@@ -36,8 +37,7 @@ const initialState: AppState = {
   voiceMessages: [
       { 
           id: 'vm1', 
-          // Sounds from Google's Assistant Sound Library
-          audioUrl: 'https://actions.google.com/sounds/v1/human_voices/human_speech.mp3',
+          audioUrl: VOICE_MESSAGE_LEO_URL,
           duration: 2,
           senderRole: SenderRole.FAMILY, 
           senderName: 'Your Grandson, Leo',
@@ -45,7 +45,7 @@ const initialState: AppState = {
       },
        { 
           id: 'vm2', 
-          audioUrl: 'https://actions.google.com/sounds/v1/human_voices/voice_with_scratchy_reception.mp3',
+          audioUrl: VOICE_MESSAGE_SAM_URL,
           duration: 3,
           senderRole: SenderRole.CAREGIVER, 
           senderName: 'Your Caregiver, Sam',
