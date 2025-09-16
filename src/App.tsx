@@ -10,6 +10,25 @@ const App: React.FC = () => {
   const { state, dispatch } = useAppContext();
   const [viewMode, setViewMode] = useState<ViewMode>(ViewMode.PATIENT);
 
+  // Effect to unlock audio on the first user interaction
+  useEffect(() => {
+    const unlockAudioPlayback = () => {
+      soundService.unlock();
+      // This handler should only run once.
+      document.removeEventListener('click', unlockAudioPlayback);
+      document.removeEventListener('touchstart', unlockAudioPlayback);
+    };
+
+    document.addEventListener('click', unlockAudioPlayback);
+    document.addEventListener('touchstart', unlockAudioPlayback);
+
+    return () => {
+      document.removeEventListener('click', unlockAudioPlayback);
+      document.removeEventListener('touchstart', unlockAudioPlayback);
+    };
+  }, []);
+
+
   // Effect for checking reminders
   useEffect(() => {
     const reminderInterval = setInterval(() => {
@@ -22,18 +41,10 @@ const App: React.FC = () => {
           return;
         }
 
-        // Parse reminder time string (e.g., "08:30 AM") into minutes from midnight
-        const [time, modifier] = reminder.time.split(' ');
-        let [hoursStr, minutesStr] = time.split(':');
+        // Parse reminder time string (e.g., "08:30") into minutes from midnight
+        const [hoursStr, minutesStr] = reminder.time.split(':');
         let hours = parseInt(hoursStr, 10);
         const minutes = parseInt(minutesStr, 10);
-
-        if (modifier === 'PM' && hours < 12) {
-          hours += 12;
-        }
-        if (modifier === 'AM' && hours === 12) { // Handle midnight case (12:xx AM)
-          hours = 0;
-        }
         
         const reminderTimeInMinutes = hours * 60 + minutes;
 

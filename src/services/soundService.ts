@@ -1,14 +1,53 @@
 // A simple service to manage audio playback for alerts.
 
-// Public domain alarm sound from Freesound
-const SOS_ALERT_URL = 'https://cdn.freesound.org/previews/518/518332_10250800-lq.mp3';
-// Public domain notification sound from Freesound
-const REMINDER_ALERT_URL = 'https://cdn.freesound.org/previews/415/415763_6142149-lq.mp3';
+// Public domain alarm sound from Freesound (OGG format for compatibility)
+const SOS_ALERT_URL = 'https://cdn.freesound.org/previews/341/341985_5734891-lq.ogg';
+// Public domain notification sound from Freesound (OGG format for compatibility)
+const REMINDER_ALERT_URL = 'https://cdn.freesound.org/previews/320/320654_5260872-lq.ogg';
 
 let sosAudio: HTMLAudioElement | null = null;
 let reminderAudio: HTMLAudioElement | null = null;
+let isUnlocked = false;
 
 const soundService = {
+  /**
+   * Unlocks the browser's audio context by playing a muted sound.
+   * This MUST be called from within a user-initiated event handler (e.g., a click).
+   */
+  unlock: () => {
+    if (isUnlocked) return;
+    
+    console.log('Attempting to unlock audio context...');
+
+    if (!sosAudio) {
+      sosAudio = new Audio(SOS_ALERT_URL);
+      sosAudio.loop = true;
+    }
+    if (!reminderAudio) {
+      reminderAudio = new Audio(REMINDER_ALERT_URL);
+      reminderAudio.loop = false;
+    }
+
+    // A common technique: play a muted sound to unlock the audio context.
+    sosAudio.muted = true;
+    const promise = sosAudio.play();
+
+    if (promise) {
+      promise.then(() => {
+        // Once playback starts, we can pause it and unmute for future use.
+        sosAudio?.pause();
+        sosAudio.currentTime = 0;
+        sosAudio.muted = false;
+        isUnlocked = true;
+        console.log('Audio context unlocked successfully.');
+      }).catch(err => {
+        // If it fails, we log the error but don't set isUnlocked,
+        // allowing another user interaction to potentially try again.
+        console.error('Audio unlock failed. Subsequent sounds may not play until another interaction.', err);
+      });
+    }
+  },
+
   /**
    * Plays the looping SOS/Fall alert sound.
    */

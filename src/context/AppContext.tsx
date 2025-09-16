@@ -12,9 +12,9 @@ interface AppState {
 
 const initialState: AppState = {
   reminders: [
-    { id: '1', title: 'Take Morning Pills', time: '08:00 AM', completed: false, icon: 'medication', notified: false },
-    { id: '2', title: 'Eat Breakfast', time: '08:30 AM', completed: false, icon: 'meal', notified: false },
-    { id: '3', title: 'Drink a glass of water', time: '10:00 AM', completed: false, icon: 'hydration', notified: false },
+    { id: '1', title: 'Take Morning Pills', time: '08:00', completed: false, icon: 'medication', notified: false },
+    { id: '2', title: 'Eat Breakfast', time: '08:30', completed: false, icon: 'meal', notified: false },
+    { id: '3', title: 'Drink a glass of water', time: '10:00', completed: false, icon: 'hydration', notified: false },
   ],
   alerts: [],
   memories: [
@@ -36,18 +36,18 @@ const initialState: AppState = {
   voiceMessages: [
       { 
           id: 'vm1', 
-          // Public domain sound from Freesound
-          audioUrl: 'https://cdn.freesound.org/previews/156/156031_2396985-lq.mp3',
-          duration: 1,
+          // Public domain sound from Freesound (OGG format)
+          audioUrl: 'https://cdn.freesound.org/previews/613/613481_1015240-lq.ogg',
+          duration: 2,
           senderRole: SenderRole.FAMILY, 
           senderName: 'Your Grandson, Leo',
           timestamp: '10:30 AM'
       },
        { 
           id: 'vm2', 
-          // Public domain sound from Freesound
-          audioUrl: 'https://cdn.freesound.org/previews/270/270319_5123851-lq.mp3',
-          duration: 2,
+          // Public domain sound from Freesound (OGG format)
+          audioUrl: 'https://cdn.freesound.org/previews/413/413349_5121236-lq.ogg',
+          duration: 1,
           senderRole: SenderRole.CAREGIVER, 
           senderName: 'Your Caregiver, Sam',
           timestamp: '11:15 AM'
